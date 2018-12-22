@@ -2,7 +2,7 @@
   <slider class="background">
     <div :class="[isActivePage ? 'xd-active':'','section']">
       <div class="xd-section_1">
-        <p>还记得</p>
+        <p>你共完成xx笔订单</p>
         <p>XX年XX月XX日</p>
         <p>于XX网点</p>
       </div>
@@ -31,13 +31,14 @@ export default {
   background-image: url('../assets/images/3.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
-  color: #fff;
 }
 
 .section {
   margin-top: 40%;
   margin-left: 10%;
   width: 53%;
+  color: #fff;
+  line-height: 1rem;
 }
 
 .xd-section_1 {
