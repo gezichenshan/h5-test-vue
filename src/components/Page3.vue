@@ -19,20 +19,10 @@
 <script>
 export default {
   props: ['currentPage'],
-  mounted() {
-    setInterval(() => {
-      this.show = !this.show
-    }, 2000)
-  },
   computed: {
     isActivePage() {
       return this.currentPage == 3
     },
-  },
-  data() {
-    return {
-      show: true,
-    }
   },
 }
 </script>
