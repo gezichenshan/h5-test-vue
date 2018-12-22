@@ -1,40 +1,17 @@
 <template>
   <div class="swiper-container" style="background:#e88a63">
     <div class="swiper-wrapper">
-      <slider>
-        <img src="../assets/images/1.png" class="slider-content">
-        <img data-src="../assets/images/1.png" class="swiper-lazy">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/3.jpg" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/4.png" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/5.png" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/6.png" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/7.png" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/8.png" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/9.png" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/10.png" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/11.png" class="slider-content">
-      </slider>
-      <slider class="slider-image-wrapper">
-        <img src="../assets/images/12.png" class="slider-content">
-      </slider>
+      <page1/>
+      <page2/>
+      <page3/>
+      <page4/>
+      <page5/>
+      <page6/>
+      <page7/>
+      <page8/>
+      <page9/>
+      <page10/>
+      <page11/>
     </div>
   </div>
 </template>
@@ -42,17 +19,40 @@
 <script>
 // import Swiper from '../assets/js/swiper.min.js'
 import Swiper from 'swiper/dist/js/swiper.js'
-import Slider from './Slider'
+// import Slider from './Slider'
 import request from '../api/request'
+import Page1 from './Page1'
+import Page2 from './Page2'
+import Page3 from './Page3'
+import Page4 from './Page4'
+import Page5 from './Page5'
+import Page6 from './Page6'
+import Page7 from './Page7'
+import Page8 from './Page8'
+import Page9 from './Page9'
+import Page10 from './Page10'
+import Page11 from './Page11'
 export default {
   data() {
     return {}
   },
-  components: { Slider },
+  components: {
+    Page1,
+    Page2,
+    Page3,
+    Page4,
+    Page5,
+    Page6,
+    Page7,
+    Page8,
+    Page9,
+    Page10,
+    Page11,
+  },
   mounted() {
-    request().then(res => {
-      console.log(res)
-    })
+    // request().then(res => {
+    //   console.log(res)
+    // })
     var mySwiper = new Swiper('.swiper-container', {
       direction: 'vertical', // 垂直切换选项
       effect: 'coverflow',
@@ -77,8 +77,6 @@ export default {
 </script>
 <style>
 .swiper-container {
-  /* width: 600px; */
-  /* width:100vw; */
   height: 100vh;
 }
 .slider-image-wrapper {
@@ -90,3 +88,29 @@ export default {
   height: 100%;
 }
 </style>
+
+
+      <!-- <slider>
+        <img src="../assets/images/1.jpg" class="slider-content">
+        <div style="color:#fff;position:absolute;left:0;top:0;font-size:16px;">12312312312</div>
+      </slider>-->
+      <!-- <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>
+      <slider class="slider-image-wrapper">
+      </slider>-->
