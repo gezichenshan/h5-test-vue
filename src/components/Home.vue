@@ -19,15 +19,15 @@
     <div class="swiper-container" style="background:#e88a63" v-if="stage===2">
       <div class="swiper-wrapper">
         <page1/>
-        <page3/>
-        <page4/>
-        <page5/>
-        <page6/>
-        <page7/>
-        <page8/>
-        <page9/>
-        <page10/>
-        <page11/>
+        <page3 :currentPage="currentPage"/>
+        <page4 :currentPage="currentPage"/>
+        <page5 :currentPage="currentPage"/>
+        <page6 :currentPage="currentPage"/>
+        <page7 :currentPage="currentPage"/>
+        <page8 :currentPage="currentPage"/>
+        <page9 :currentPage="currentPage"/>
+        <page10 :currentPage="currentPage"/>
+        <page11 :currentPage="currentPage"/>
       </div>
     </div>
 
@@ -62,6 +62,7 @@ export default {
       stage: STAGE_LOGIN,
       loading: false,
       isLogin: false,
+      currentPage: 0,
     }
   },
   components: {
@@ -115,6 +116,7 @@ export default {
         })
     },
     initSlider() {
+      let self = this
       new Swiper('.swiper-container', {
         direction: 'vertical', // 垂直切换选项
         effect: 'coverflow',
@@ -132,6 +134,14 @@ export default {
         flip: {
           limitRotation: true,
           slideShadows: false, // do disable shadows for better performance
+        },
+        watchSlidesProgress: true,
+        on: {
+          progress: function(progress) {
+            // console.log(progress)
+            var current = (progress * 10).toString().split('.')[0]
+            self.currentPage = parseInt(current) + 2 //加入2让currentPage和num.vue的num匹配
+          },
         },
       })
     },

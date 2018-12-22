@@ -1,17 +1,71 @@
 <template>
   <slider class="background">
-    <!-- <img src="../assets/images/1.jpg" class="slider-content"> -->
-    <!-- <div style="color:#fff;position:absolute;left:0;top:0;font-size:16px;">12312312312</div> -->
+    <div :class="[isActivePage ? 'xd-active':'','section']">
+      <div class="xd-section_1">
+        <p>还记得</p>
+        <p>XX年XX月XX日</p>
+        <p>于XX网点</p>
+      </div>
+      <div class="xd-section_2">
+        <p>我们见面了</p>
+        <p>你怯生生的</p>
+        <p>却温暖的靠近</p>
+        <p>______</p>
+        <p>让我只想出现在你的每一天</p>
+      </div>
+    </div>
   </slider>
 </template>
 <script>
-export default {}
+export default {
+  props: ['currentPage'],
+  mounted() {
+    setInterval(() => {
+      this.show = !this.show
+    }, 2000)
+  },
+  computed: {
+    isActivePage() {
+      return this.currentPage == 3
+    },
+  },
+  data() {
+    return {
+      show: true,
+    }
+  },
+}
 </script>
 <style lang="scss" scoped>
 .background {
   background-image: url('../assets/images/3.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
+  color: #fff;
+}
+
+.section {
+  margin-top: 40%;
+  margin-left: 10%;
+  width: 53%;
+}
+
+.xd-section_1 {
+  opacity: 0;
+}
+
+.xd-section_2 {
+  opacity: 0;
+}
+
+.xd-active .xd-section_1 {
+  opacity: 1;
+  -webkit-transition: all 0.5s ease-in 0.6s;
+}
+
+.xd-active .xd-section_2 {
+  opacity: 1;
+  -webkit-transition: all 0.5s ease-in 1.2s;
 }
 </style>
 

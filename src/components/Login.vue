@@ -10,7 +10,11 @@
           v-model="password"
           style="margin-top:5px;color:#fff;caret-color: #fff;"
         >
-        <mt-button type="primary" style="margin-top:5px;width:10rem" @click="submit">登录</mt-button>
+        <mt-button
+          type="primary"
+          style="margin-top:5px;width:10rem;background:#e68a67"
+          @click="submit"
+        >登录</mt-button>
       </div>
     </div>
   </slider>
@@ -26,9 +30,10 @@ export default {
   },
   methods: {
     submit() {
-      // let username = '13825662216'
-      // let password = '654321'
-      this.login(this.username, this.password)
+      let username = '13825662216'
+      let password = '654321'
+      this.login(username, password)
+      // this.login(this.username, this.password)
     },
   },
 }
