@@ -83,26 +83,28 @@ export default {
       this.loading = true
       request(username, password)
         .then(res => {
-          const { resultCode } = res.data
-          if (resultCode === '0000') {
-            this.isLogin = true
-            //用户存在系统中
-            this.stage = STAGE_PASS
-            setTimeout(() => {
-              this.initSlider()
-            }, 500)
-          } else if (resultCode === '4444' || resultCode === '2222') {
-            //密码错误
-            Toast({
-              message: '账号密码错误',
-              duration: 3000,
-            })
-          } else if (resultCode === '5555') {
-            //没查到该用户信息
-            this.stage = STAGE_NO_INFO
+          const { resultCode, msg } = res.data
+          if (resultCode) {
+            if (resultCode === '0000') {
+              this.isLogin = true
+              //用户存在系统中
+              this.stage = STAGE_PASS
+              setTimeout(() => {
+                this.initSlider()
+              }, 500)
+            } else if (resultCode === '4444' || resultCode === '2222') {
+              //密码错误
+              Toast({
+                message: '账号密码错误',
+                duration: 3000,
+              })
+            } else if (resultCode === '5555') {
+              //没查到该用户信息
+              this.stage = STAGE_NO_INFO
+            }
           } else {
             Toast({
-              message: '未知错误，请联系客服',
+              message: msg,
               duration: 5000,
             })
           }
