@@ -7,11 +7,10 @@
         <div class="small-font">长沙、湘潭、株洲、浏阳、益阳</div>
         <div class="small-font">宁乡、衡阳、常德、岳阳、永州</div>
         <div>都出现了先导出行的身影</div>
-        <div>于XX网点</div>
       </div>
       <div class="xd-section_2">
-        <div>你共跨城了xx次</div>
-        <div>常在xx驻足</div>
+        <div>你共跨城了{{data.cross_city_num}}次</div>
+        <div>常在null驻足</div>
         <div>______</div>
         <div class="small-font">不管是去见心爱的人还是回温暖的家</div>
         <div class="small-font">都觉得又便捷又实惠</div>
@@ -21,7 +20,7 @@
 </template>
 <script>
 export default {
-  props: ['currentPage'],
+  props: ['currentPage', 'data'],
   computed: {
     isActivePage() {
       return this.currentPage == 8

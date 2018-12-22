@@ -2,12 +2,12 @@
   <slider class="background">
     <div :class="[isActivePage ? 'xd-active':'','section']">
       <div class="xd-section_1">
-        <div>你共完成xx笔订单</div>
-        <div>共计用车xx小时</div>
-        <div>总消费xx元</div>
-        <div>超过了xx的用户</div>
-        <div>相当于为城市减少了xx千克</div>
-        <div>二氧化碳，种植了xx棵树木</div>
+        <div>你共完成{{data.total_order_num}}笔订单</div>
+        <div>共计用车{{data.total_order_time}}小时</div>
+        <div>总消费{{data.total_order_cost}}元</div>
+        <div>超过了{{data.order_percent}}%的用户</div>
+        <div>相当于为城市减少了{{formatData(0.2 * data.used_mils)}}千克</div>
+        <div>二氧化碳，种植了{{formatData(data.used_mils/25)}}棵树木</div>
         <div>______</div>
       </div>
       <div class="xd-section_2 small-font">
@@ -23,10 +23,18 @@
 </template>
 <script>
 export default {
-  props: ['currentPage'],
+  props: ['currentPage', 'data'],
   computed: {
     isActivePage() {
       return this.currentPage == 10
+    },
+  },
+  methods: {
+    formatData(num = 0) {
+      num = num.toString()
+      if (num.indexOf('.') > -1) {
+        return num.toString().split('.')[0]
+      }
     },
   },
 }

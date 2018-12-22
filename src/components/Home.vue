@@ -19,15 +19,15 @@
     <div class="swiper-container" style="background:#e88a63" v-if="stage===2">
       <div class="swiper-wrapper">
         <page1/>
-        <page3 :currentPage="currentPage"/>
-        <page4 :currentPage="currentPage"/>
-        <page5 :currentPage="currentPage"/>
-        <page6 :currentPage="currentPage"/>
-        <page7 :currentPage="currentPage"/>
-        <page8 :currentPage="currentPage"/>
-        <page9 :currentPage="currentPage"/>
-        <page10 :currentPage="currentPage"/>
-        <page11 :currentPage="currentPage"/>
+        <page3 :currentPage="currentPage" :data="componentData"/>
+        <page4 :currentPage="currentPage" :data="componentData"/>
+        <page5 :currentPage="currentPage" :data="componentData"/>
+        <page6 :currentPage="currentPage" :data="componentData"/>
+        <page7 :currentPage="currentPage" :data="componentData"/>
+        <page8 :currentPage="currentPage" :data="componentData"/>
+        <page9 :currentPage="currentPage" :data="componentData"/>
+        <page10 :currentPage="currentPage" :data="componentData"/>
+        <page11 :currentPage="currentPage" :data="componentData"/>
       </div>
     </div>
 
@@ -63,6 +63,7 @@ export default {
       loading: false,
       isLogin: false,
       currentPage: 0,
+      componentData: {},
     }
   },
   components: {
@@ -90,6 +91,7 @@ export default {
               this.isLogin = true
               //用户存在系统中
               this.stage = STAGE_PASS
+              this.componentData = res.data.statisticsDate
               setTimeout(() => {
                 this.initSlider()
               }, 500)

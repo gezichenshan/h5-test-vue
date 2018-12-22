@@ -9,7 +9,7 @@
         <div>绿色出行</div>
       </div>
       <div class="xd-section_2 middle-font">
-        <div>你共邀请xx人加入先导出行大家族</div>
+        <div>你共邀请{{data.inviter_num}}人加入先导出行大家族</div>
         <div>你也很愿意分享这份绿色便利给Ta人</div>
         <div></div>
 
@@ -22,7 +22,7 @@
 </template>
 <script>
 export default {
-  props: ['currentPage'],
+  props: ['currentPage', 'data'],
   computed: {
     isActivePage() {
       return this.currentPage == 9
