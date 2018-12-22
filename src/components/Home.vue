@@ -1,26 +1,46 @@
 <template>
-  <div class="swiper-container" style="background:#e88a63">
-    <div class="swiper-wrapper">
-      <page1/>
-      <page2/>
-      <page3/>
-      <page4/>
-      <page5/>
-      <page6/>
-      <page7/>
-      <page8/>
-      <page9/>
-      <page10/>
-      <page11/>
+  <div>
+    <div class="swiper-container" style="background:#e88a63" v-if="stage===0">
+      <div class="xd-loading" v-if="loading">
+        <mt-spinner color="#26a2ff"></mt-spinner>
+      </div>
+      <div class="xd-toast"></div>
+      <div class="swiper-wrapper">
+        <Login :login="login"/>
+      </div>
+    </div>
+
+    <div class="swiper-container" style="background:#e88a63" v-if="stage===1">
+      <div class="swiper-wrapper">
+        <page2/>
+      </div>
+    </div>
+
+    <div class="swiper-container" style="background:#e88a63" v-if="stage===2">
+      <div class="swiper-wrapper">
+        <page1/>
+        <page3/>
+        <page4/>
+        <page5/>
+        <page6/>
+        <page7/>
+        <page8/>
+        <page9/>
+        <page10/>
+        <page11/>
+      </div>
+    </div>
+
+    <div class="pub-passdown" v-if="isLogin&&stage!==1">
+      <img src="../assets/images/arrow-up.png" width="100%">
     </div>
   </div>
 </template>
 
 <script>
-// import Swiper from '../assets/js/swiper.min.js'
 import Swiper from 'swiper/dist/js/swiper.js'
-// import Slider from './Slider'
 import request from '../api/request'
+import Login from './Login'
 import Page1 from './Page1'
 import Page2 from './Page2'
 import Page3 from './Page3'
@@ -32,11 +52,20 @@ import Page8 from './Page8'
 import Page9 from './Page9'
 import Page10 from './Page10'
 import Page11 from './Page11'
+import { Toast } from 'mint-ui'
+const STAGE_LOGIN = 0
+const STAGE_NO_INFO = 1
+const STAGE_PASS = 2
 export default {
   data() {
-    return {}
+    return {
+      stage: STAGE_LOGIN,
+      loading: false,
+      isLogin: false,
+    }
   },
   components: {
+    Login,
     Page1,
     Page2,
     Page3,
@@ -49,29 +78,64 @@ export default {
     Page10,
     Page11,
   },
+  methods: {
+    login: function(username, password) {
+      this.loading = true
+      request(username, password)
+        .then(res => {
+          const { resultCode } = res.data
+          if (resultCode === '0000') {
+            this.isLogin = true
+            //用户存在系统中
+            this.stage = STAGE_PASS
+            setTimeout(() => {
+              this.initSlider()
+            }, 500)
+          } else if (resultCode === '4444' || resultCode === '2222') {
+            //密码错误
+            Toast({
+              message: '账号密码错误',
+              duration: 3000,
+            })
+          } else if (resultCode === '5555') {
+            //没查到该用户信息
+            this.stage = STAGE_NO_INFO
+          } else {
+            Toast({
+              message: '未知错误，请联系客服',
+              duration: 5000,
+            })
+          }
+          this.loading = false
+        })
+        .catch(error => {
+          throw error
+        })
+    },
+    initSlider() {
+      new Swiper('.swiper-container', {
+        direction: 'vertical', // 垂直切换选项
+        effect: 'coverflow',
+        speed: 400,
+        fade: {
+          crossFade: false,
+        },
+        coverflow: {
+          rotate: 100,
+          stretch: 0,
+          depth: 300,
+          modifier: 1,
+          slideShadows: false, // do disable shadows for better performance
+        },
+        flip: {
+          limitRotation: true,
+          slideShadows: false, // do disable shadows for better performance
+        },
+      })
+    },
+  },
   mounted() {
-    // request().then(res => {
-    //   console.log(res)
-    // })
-    var mySwiper = new Swiper('.swiper-container', {
-      direction: 'vertical', // 垂直切换选项
-      effect: 'coverflow',
-      speed: 400,
-      fade: {
-        crossFade: false,
-      },
-      coverflow: {
-        rotate: 100,
-        stretch: 0,
-        depth: 300,
-        modifier: 1,
-        slideShadows: false, // do disable shadows for better performance
-      },
-      flip: {
-        limitRotation: true,
-        slideShadows: false, // do disable shadows for better performance
-      },
-    })
+    this.initSlider()
   },
 }
 </script>
@@ -87,30 +151,34 @@ export default {
   width: 100%;
   height: 100%;
 }
+.xd-loading {
+  position: absolute;
+  width: 10%;
+  left: 45%;
+  bottom: 50%;
+  z-index: 999;
+}
+
+.pub-passdown {
+  position: absolute;
+  width: 10%;
+  left: 45%;
+  bottom: 4%;
+  z-index: 999;
+  -webkit-animation-name: passdown;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-duration: 0.8s;
+  -webkit-animation-iteration-count: infinite;
+}
+@keyframes passdown {
+  0% {
+    bottom: 5%;
+  }
+  50% {
+    bottom: 3.2%;
+  }
+  100% {
+    bottom: 5%;
+  }
+}
 </style>
-
-
-      <!-- <slider>
-        <img src="../assets/images/1.jpg" class="slider-content">
-        <div style="color:#fff;position:absolute;left:0;top:0;font-size:16px;">12312312312</div>
-      </slider>-->
-      <!-- <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>
-      <slider class="slider-image-wrapper">
-      </slider>-->
