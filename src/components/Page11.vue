@@ -2,8 +2,8 @@
   <slider class="background">
     <div :class="[isActivePage ? 'xd-active':'','section']">
       <div class="xd-section_1">
-        <div>心爱的xx</div>
-        <div>你是第xx位“导主”</div>
+        <div>心爱的{{name}}</div>
+        <div>你是第{{data.user_index}}位“导主”</div>
         <div>_________</div>
       </div>
       <div class="xd-section_2 small-font">
@@ -18,7 +18,7 @@
 </template>
 <script>
 export default {
-  props: ['currentPage'],
+  props: ['currentPage', 'data', 'name'],
   computed: {
     isActivePage() {
       return this.currentPage == 12

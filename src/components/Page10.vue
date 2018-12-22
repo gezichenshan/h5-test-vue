@@ -48,7 +48,7 @@ export default {
 .section {
   margin-top: 6%;
   margin-left: 10%;
-  width: 53%;
+  // width: 53%;
   // line-height: 1.1rem;
 }
 

@@ -27,7 +27,7 @@
         <page8 :currentPage="currentPage" :data="componentData"/>
         <page9 :currentPage="currentPage" :data="componentData"/>
         <page10 :currentPage="currentPage" :data="componentData"/>
-        <page11 :currentPage="currentPage" :data="componentData"/>
+        <page11 :currentPage="currentPage" :data="componentData" :name="username"/>
       </div>
     </div>
 
@@ -64,6 +64,7 @@ export default {
       isLogin: false,
       currentPage: 0,
       componentData: {},
+      username: '',
     }
   },
   components: {
@@ -88,6 +89,7 @@ export default {
           const { resultCode, msg } = res.data
           if (resultCode) {
             if (resultCode === '0000') {
+              this.username = username
               this.isLogin = true
               //用户存在系统中
               this.stage = STAGE_PASS

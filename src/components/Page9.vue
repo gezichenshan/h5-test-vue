@@ -51,7 +51,7 @@ export default {
 .section {
   margin-top: 98%;
   margin-left: 25%;
-  width: 53%;
+  // width: 53%;
   font-size: 0.8rem;
   line-height: 1rem;
   position: relative;
