@@ -2,7 +2,7 @@
   <slider class="background">
     <div class="title">
       <div>先导出行</div>
-      <div>大家庭</div>
+      <div>大家族</div>
     </div>
     <div :class="[isActivePage ? 'xd-active':'','section']">
       <div class="xd-section_1">
