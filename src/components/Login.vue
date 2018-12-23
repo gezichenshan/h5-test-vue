@@ -59,6 +59,7 @@ export default {
   align-items: center;
 }
 .xd-login {
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
