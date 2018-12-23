@@ -30,10 +30,10 @@ export default {
   },
   methods: {
     submit() {
-      let username = '13825662216'
-      let password = '654321'
-      this.login(username, password)
-      // this.login(this.username, this.password)
+      // let username = '13825662216'
+      // let password = '654321'
+      // this.login(username, password)
+      this.login(this.username, this.password)
     },
   },
 }

@@ -60,12 +60,12 @@ export default {
   font-size: 0.6rem;
 }
 
-.xd-active .xd-section_1 {
+.swiper-slide-active .xd-section_1 {
   opacity: 1;
   -webkit-transition: all 0.5s ease-in 0.6s;
 }
 
-.xd-active .xd-section_2 {
+.swiper-slide-active .xd-section_2 {
   opacity: 1;
   -webkit-transition: all 0.5s ease-in 1.2s;
 }
