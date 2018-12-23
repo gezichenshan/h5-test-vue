@@ -27,7 +27,7 @@
         <page8 :currentPage="currentPage" :data="componentData"/>
         <page9 :currentPage="currentPage" :data="componentData"/>
         <page10 :currentPage="currentPage" :data="componentData"/>
-        <page11 :currentPage="currentPage" :data="componentData" :name="username"/>
+        <page11 :currentPage="currentPage" :data="componentData" :name="username" :review="review"/>
       </div>
     </div>
 
@@ -65,6 +65,7 @@ export default {
       currentPage: 0,
       componentData: {},
       username: '',
+      sliderInstance: {},
     }
   },
   components: {
@@ -121,7 +122,7 @@ export default {
     },
     initSlider() {
       let self = this
-      new Swiper('.swiper-container', {
+      this.sliderInstance = new Swiper('.swiper-container', {
         direction: 'vertical', // 垂直切换选项
         effect: 'coverflow',
         speed: 400,
@@ -142,12 +143,14 @@ export default {
         watchSlidesProgress: true,
         on: {
           progress: function(progress) {
-            // console.log(progress)
             var current = (progress * 10).toString().split('.')[0]
             self.currentPage = parseInt(current) + 2 //加入2让currentPage和num.vue的num匹配
           },
         },
       })
+    },
+    review() {
+      this.sliderInstance.slideTo(0, 100, false)
     },
   },
   mounted() {

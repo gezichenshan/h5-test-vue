@@ -2,7 +2,7 @@
   <slider class="background">
     <div class="xd-page-container">
       <div class="xd-login xd-pub-passdown">
-        <span>下滑查看年终账单</span>
+        <span>上滑查看年终账单</span>
       </div>
     </div>
   </slider>
