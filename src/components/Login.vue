@@ -20,6 +20,7 @@
   </slider>
 </template>
 <script>
+import $ from 'jquery'
 export default {
   props: ['login'],
   data() {
@@ -35,6 +36,11 @@ export default {
       // this.login(username, password)
       this.login(this.username, this.password)
     },
+  },
+  mounted() {
+    $('input').blur(function() {
+      $(window).scrollTop(0, 0) //prevent virtual keyboard push the content up
+    })
   },
 }
 </script>
