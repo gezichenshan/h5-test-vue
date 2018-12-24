@@ -66,12 +66,15 @@ export default {
   display: flex;
   flex: 1;
   height: 100vh;
+  flex-direction: column;
+  position: relative;
   // background: #f00;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;
 }
 .xd-login {
-  padding-top: 3rem;
+  position: absolute;
+  top: 18rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
