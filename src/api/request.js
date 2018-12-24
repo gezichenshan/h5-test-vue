@@ -1,6 +1,10 @@
 import axios from 'axios'
 import md5 from 'md5'
 
+import config from '../config'
+
+const { BASE_URL, PATH_URL } = config
+
 export default function fetchData(username, password) {
   let timestamp = new Date().getTime() //'1517753310782'
   let key = '9048a3dbab43c51098460b31fc14753f'
@@ -9,12 +13,12 @@ export default function fetchData(username, password) {
   const sign = md5(formedString).toUpperCase()
 
   var instance = axios.create({
-    baseURL: 'http://ready-go.cn:9090',
+    baseURL: BASE_URL,
     timeout: 1000,
     headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' },
   })
   const config = {
-    url: '/osp/statistics/yearEndstatis.dc',
+    url: PATH_URL,
     method: 'post',
     responseType: 'json',
     //x-www-form-urlencoded way
