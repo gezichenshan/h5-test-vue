@@ -87,36 +87,32 @@ export default {
       this.loading = true
       request(username, password)
         .then(res => {
-          const { resultCode, msg } = res.data
-          if (resultCode) {
-            if (resultCode === '0000') {
-              this.username = username
-              this.isLogin = true
-              //用户存在系统中
+          const { code, msg } = res.data
+          if (code === '0000') {
+            this.username = username
+            this.isLogin = true
+            //用户存在系统中
+            this.componentData = res.data.statisticsDate
+            if (this.componentData.total_order_num > 0) {
+              //用户有用过
               this.stage = STAGE_PASS
-              this.componentData = res.data.statisticsDate
-              setTimeout(() => {
-                this.initSlider()
-              }, 500)
-            } else if (resultCode === '4444' || resultCode === '2222') {
-              //密码错误
-              Toast({
-                message: '账号密码错误',
-                duration: 3000,
-              })
-            } else if (resultCode === '5555') {
-              //没查到该用户信息
+            } else {
+              //用户注册过但没用过
               this.stage = STAGE_NO_INFO
             }
+            setTimeout(() => {
+              this.initSlider()
+            }, 500)
           } else {
             Toast({
               message: msg,
-              duration: 5000,
+              duration: 3000,
             })
           }
           this.loading = false
         })
         .catch(error => {
+          this.loading = false
           throw error
         })
     },
@@ -124,7 +120,7 @@ export default {
       let self = this
       this.sliderInstance = new Swiper('.swiper-container', {
         direction: 'vertical', // 垂直切换选项
-        effect: 'coverflow',
+        effect: 'fade',
         speed: 400,
         fade: {
           crossFade: false,

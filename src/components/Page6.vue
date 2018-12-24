@@ -8,7 +8,7 @@
       </div>
       <div class="xd-section_2">
         <p>______</p>
-        <span>老熟人了，连快递小哥都认识你了哟</span>
+        <span>老熟人了，连运维小哥都认识你了哟</span>
       </div>
     </div>
   </slider>

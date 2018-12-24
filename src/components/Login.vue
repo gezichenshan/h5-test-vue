@@ -2,19 +2,31 @@
   <slider class="background">
     <div class="xd-page-container">
       <div class="xd-login">
-        <input type="text" class="ant-input" placeholder="请输入用户名" v-model="username">
+        <input
+          type="text"
+          class="ant-input"
+          placeholder="用户名"
+          v-model="username"
+          style="margin-top:5px;color:#fff;caret-color: #fff;"
+        >
         <input
           type="password"
           class="ant-input"
-          placeholder="请输入密码"
+          placeholder="密码"
           v-model="password"
           style="margin-top:5px;color:#fff;caret-color: #fff;"
         >
-        <mt-button
-          type="primary"
-          style="margin-top:5px;width:10rem;background:#e68a67"
-          @click="submit"
-        >登录</mt-button>
+        <div>
+          <mt-button
+            type="primary"
+            style="margin-top:5px;width:10rem;background:#e68a67"
+            @click="submit"
+          >登录</mt-button>
+          <a
+            style="color:#fff;margin-top:1rem;margin-left:1rem"
+            href="https://a.app.qq.com/o/simple.jsp?pkgname=com.cpih.zulin&fromcase=40002"
+          >新用户？</a>
+        </div>
       </div>
     </div>
   </slider>
