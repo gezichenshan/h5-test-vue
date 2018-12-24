@@ -113,6 +113,10 @@ export default {
         })
         .catch(error => {
           this.loading = false
+          Toast({
+            message: '系统错误，请联系客服',
+            duration: 3000,
+          })
           throw error
         })
     },
