@@ -9,7 +9,12 @@
       </div>
       <div class="xd-section_2">
         <p>______</p>
-        <span>开启一段优质的新生活总是意义非凡</span>
+        <p>
+          <span>你一定在仰望自由</span>
+        </p>
+        <p>
+          <span>而我们也越来越离不开彼此</span>
+        </p>
       </div>
     </div>
   </slider>
