@@ -4,7 +4,7 @@
       <div class="xd-section_1">
         <div>在这里一年里，</div>
         <div>你在{{data.take_car_name}}网点取车次数达到了{{data.take_car_num}}次。</div>
-        <div>在{{data.take_car_name}}网点还车次数达到{{data.ret_car_num}}次。</div>
+        <div>在{{data.ret_car_name}}网点还车次数达到{{data.ret_car_num}}次。</div>
       </div>
       <div class="xd-section_2">
         <p>______</p>
