@@ -10,7 +10,7 @@
       </div>
       <div class="xd-section_2">
         <div>你共跨城了{{data.cross_city_num}}次</div>
-        <div>常在{{data.take_car_name}}驻足</div>
+        <div>常在{{data.take_car_city}}驻足</div>
         <div>______</div>
         <div class="small-font">不管是去见心爱的人还是回温暖的家</div>
         <div class="small-font">都觉得又便捷又实惠</div>
